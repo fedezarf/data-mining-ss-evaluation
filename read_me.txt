@@ -1,0 +1,4 @@
+1) Generate all the output files using the scripts provided (changing the paths, the scripts generate files that should be moved in order to make the process work, e.g. the collection has to be moved inside a folder containing the index)
+2) Move all the output files generated in a common folder with the python and bash scripts
+3) Launch the bash scripts. FIRST performance_cran.sh THEN performance_time.sh (one per dataset). This will generate the Report.csv file. This file is already provided with the zip folder
+4) Launch the python software for the plots (one can comment the lines of the script to generate only one plot)

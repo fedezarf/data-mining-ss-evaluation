@@ -1,0 +1,59 @@
+HMW1 MG4j bash
+
+
+java it.unimi.di.big.mg4j.document.FileSetDocumentCollection --help
+
+#Time Collection
+	find Time_DATASET/time -iname \*.html | java it.unimi.di.big.mg4j.document.FileSetDocumentCollection -f HtmlDocumentFactory -p encoding=UTF-8 Time_DATASET_DATA.collection
+	#Default Stemmer
+	java it.unimi.di.big.mg4j.tool.IndexBuilder --downcase -S time_workspace/Time_DATASET_DATA.collection time_workspace/indexes/default/Time_DATASET_DATA
+		#CountScorer
+		java homework.RunAllQueries_HW "time_workspace/default_CountScorer/Time_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Time_DATASET/time_all_queries.tsv "CountScorer" "1:2" time_workspace/output_time_default_CountScorer.tsv
+		#TFiDFScorer
+		java homework.RunAllQueries_HW "time_workspace/default_CountScorer/Time_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Time_DATASET/time_all_queries.tsv "TfIdfScorer" "1:2" time_workspace/output_time_default_tfidf.tsv
+		#BM25Scorer
+		java homework.RunAllQueries_HW "time_workspace/default_CountScorer/Time_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Time_DATASET/time_all_queries.tsv "BM25Scorer" "1:2" time_workspace/output_time_default_BM25Scorer.tsv
+	#English Stemmer
+	java it.unimi.di.big.mg4j.tool.IndexBuilder -t it.unimi.di.big.mg4j.index.snowball.EnglishStemmer -S time_workspace/englishStemmer/Time_DATASET_DATA.collection time_workspace/englishStemmer/Time_DATASET_DATA
+		#CountScorer
+		java homework.RunAllQueries_HW "time_workspace/englishStemmer/Time_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Time_DATASET/time_all_queries.tsv "CountScorer" "1:2" time_workspace/englishStemmer/output_time_english_CountScorer.tsv
+		#TFiDFScorer
+		java homework.RunAllQueries_HW "time_workspace/englishStemmer/Time_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Time_DATASET/time_all_queries.tsv "TfIdfScorer" "1:2" time_workspace/englishStemmer/output_time_english_tfidf.tsv
+		#BM25Scorer
+		java homework.RunAllQueries_HW "time_workspace/englishStemmer/Time_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Time_DATASET/time_all_queries.tsv "BM25Scorer" "1:2" time_workspace/englishStemmer/output_time_english_BM25Scorer.tsv
+	#Stopwords Stemmer
+	java it.unimi.di.big.mg4j.tool.IndexBuilder -t homework.EnglishStemmerStopwords -S time_workspace/stopStemmer/Time_DATASET_DATA.collection time_workspace/stopStemmer/Time_DATASET_DATA
+		#CountScorer
+		java homework.RunAllQueries_HW "time_workspace/stopStemmer/Time_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Time_DATASET/time_all_queries.tsv "CountScorer" "1:2" time_workspace/stopStemmer/output_time_stop_CountScorer.tsv
+		#TFiDFScorer
+		java homework.RunAllQueries_HW "time_workspace/stopStemmer/Time_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Time_DATASET/time_all_queries.tsv "TfIdfScorer" "1:2" time_workspace/stopStemmer/output_time_stop_tfidf.tsv
+		#BM25Scorer
+		java homework.RunAllQueries_HW "time_workspace/stopStemmer/Time_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Time_DATASET/time_all_queries.tsv "BM25Scorer" "1:2" time_workspace/stopStemmer/output_time_stop_BM25Scorer.tsv
+
+
+#Cranfield Collection
+	find Cranfield_DATASET/cran -iname \*.html | java it.unimi.di.big.mg4j.document.FileSetDocumentCollection -f HtmlDocumentFactory -p encoding=UTF-8 Cran_DATASET_DATA.collection
+	#Default Stemmer
+	java it.unimi.di.big.mg4j.tool.IndexBuilder --downcase -S cran_workspace/Cran_DATASET_DATA.collection cran_workspace/defaultStemmer/Cran_DATASET_DATA
+		#CountScorer
+		java homework.RunAllQueries_HW "cran_workspace/defaultStemmer/Cran_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Cranfield_DATASET/cran_all_queries.tsv "CountScorer" "1:2" cran_workspace/output_cran_default_CountScorer.tsv
+		#TFiDFScorer
+		java homework.RunAllQueries_HW "cran_workspace/defaultStemmer/Cran_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Cranfield_DATASET/cran_all_queries.tsv "TfIdfScorer" "1:2" cran_workspace/output_cran_default_tfidf.tsv
+		#BM25Scorer
+		java homework.RunAllQueries_HW "cran_workspace/defaultStemmer/Cran_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Cranfield_DATASET/cran_all_queries.tsv "BM25Scorer" "1:2" cran_workspace/output_cran_default_BM25Scorer.tsv
+	#English Stemmer
+	java it.unimi.di.big.mg4j.tool.IndexBuilder -t it.unimi.di.big.mg4j.index.snowball.EnglishStemmer -S cran_workspace/englishStemmer/Cran_DATASET_DATA.collection cran_workspace/englishStemmer/Cran_DATASET_DATA
+		#CountScorer
+		java homework.RunAllQueries_HW "cran_workspace/englishStemmer/Cran_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Cranfield_DATASET/cran_all_queries.tsv "CountScorer" "1:2" cran_workspace/englishStemmer/output_cran_english_CountScorer.tsv
+		#TFiDFScorer
+		java homework.RunAllQueries_HW "cran_workspace/englishStemmer/Cran_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Cranfield_DATASET/cran_all_queries.tsv "TfIdfScorer" "1:2" cran_workspace/englishStemmer/output_cran_english_tfidf.tsv
+		#BM25Scorer
+		java homework.RunAllQueries_HW "cran_workspace/englishStemmer/Cran_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Cranfield_DATASET/cran_all_queries.tsv "BM25Scorer" "1:2" cran_workspace/englishStemmer/output_cran_english_BM25Scorer.tsv
+	#Stopwords Stemmer
+	java it.unimi.di.big.mg4j.tool.IndexBuilder -t homework.EnglishStemmerStopwords -S cran_workspace/stopStemmer/Cran_DATASET_DATA.collection cran_workspace/stopStemmer/Cran_DATASET_DATA
+		#CountScorer
+		java homework.RunAllQueries_HW "cran_workspace/stopStemmer/Cran_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Cranfield_DATASET/cran_all_queries.tsv "CountScorer" "1:2" cran_workspace/stopStemmer/output_cran_stop_CountScorer.tsv
+		#TFiDFScorer
+		java homework.RunAllQueries_HW "cran_workspace/stopStemmer/Cran_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Cranfield_DATASET/cran_all_queries.tsv "TfIdfScorer" "1:2" cran_workspace/stopStemmer/output_cran_stop_tfidf.tsv
+		#BM25Scorer
+		java homework.RunAllQueries_HW "cran_workspace/stopStemmer/Cran_DATASET_DATA" /Users/Federico/Documents/University/Data\ Mining/HW1/Cranfield_DATASET/cran_all_queries.tsv "BM25Scorer" "1:2" cran_workspace/stopStemmer/output_cran_stop_BM25Scorer.tsv
